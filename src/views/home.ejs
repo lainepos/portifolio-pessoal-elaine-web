@@ -1,0 +1,56 @@
+<%- include('partials/header') %>
+
+<div class="columns">
+    <div class="column is-one-third">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Ministérios
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <ul id="ministries-list">
+                        <!-- filled by client JS -->
+                    </ul>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <a href="/ministerios" class="card-footer-item">Ver todos</a>
+            </footer>
+        </div>
+    </div>
+
+    <div class="column is-two-thirds">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">
+                    Próximos Eventos
+                </p>
+            </header>
+            <div class="card-content">
+                <div class="content">
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Evento</th>
+                                <th>Ministério</th>
+                                <th>Pessoas</th>
+                            </tr>
+                        </thead>
+                        <tbody id="events-list">
+                            <!-- filled by client JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <footer class="card-footer">
+                <a href="/eventos" class="card-footer-item">Ver todos</a>
+            </footer>
+        </div>
+    </div>
+</div>
+
+    <script src="/js/app.js"></script>
+<%- include('partials/footer') %>

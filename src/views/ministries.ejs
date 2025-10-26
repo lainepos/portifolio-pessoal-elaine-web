@@ -1,0 +1,57 @@
+<%- include('partials/header') %>
+
+<div class="level">
+    <div class="level-left">
+        <div class="level-item">
+            <h1 class="title">Ministérios</h1>
+        </div>
+    </div>
+    <div class="level-right">
+        <div class="level-item">
+            <button class="button is-primary" onclick="openNewMinistryModal()">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Novo Ministério</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="columns is-multiline" id="ministries-grid">
+    <!-- populated by client JS -->
+</div>
+
+<!-- Modal for new ministry -->
+<div class="modal" id="newMinistryModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Novo Ministério</p>
+            <button class="delete" aria-label="close" onclick="closeNewMinistryModal()"></button>
+        </header>
+        <form id="newMinistryForm" onsubmit="createMinistry(event)">
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">Nome</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Descrição</label>
+                    <div class="control">
+                        <textarea class="textarea" name="description"></textarea>
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-primary">Salvar</button>
+                <button type="button" class="button" onclick="closeNewMinistryModal()">Cancelar</button>
+            </footer>
+        </form>
+    </div>
+</div>
+
+<script src="/js/app.js"></script>
+<%- include('partials/footer') %>

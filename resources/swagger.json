@@ -1,0 +1,141 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Escala Ministerial API",
+    "version": "1.0.0",
+    "description": "API para controle de escalas ministeriais - em memória"
+  },
+  "paths": {
+    "/api/auth/login": {
+      "post": {
+        "summary": "Login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/LoginRequest" }
+            }
+          }
+        },
+        "responses": { "200": { "description": "Token" }, "401": { "description": "Unauthorized" } }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "summary": "Register user (optionally create person)",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RegisterRequest" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Validation" } }
+      }
+    },
+    "/api/ministries": {
+      "get": { "summary": "List ministries", "responses": { "200": { "description": "OK" } }, "security": [{"bearerAuth": []}] },
+      "post": {
+        "summary": "Create ministry",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MinistryCreate" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Validation" } }
+      }
+    },
+    "/api/people": {
+      "get": { "summary": "List people", "responses": { "200": { "description": "OK" } }, "security": [{"bearerAuth": []}] },
+      "post": {
+        "summary": "Create person",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/PersonCreate" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Validation" } }
+      }
+    },
+    "/api/events": {
+      "get": { "summary": "List events", "responses": { "200": { "description": "OK" } }, "security": [{"bearerAuth": []}] },
+      "post": {
+        "summary": "Create event",
+        "security": [{"bearerAuth": []}],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/EventCreate" }
+            }
+          }
+        },
+        "responses": { "201": { "description": "Created" }, "400": { "description": "Validation" } }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT" }
+    },
+    "schemas": {
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "username": { "type": "string" },
+          "password": { "type": "string" }
+        },
+        "required": ["username", "password"]
+      },
+      "RegisterRequest": {
+        "type": "object",
+        "properties": {
+          "username": { "type": "string" },
+          "password": { "type": "string" },
+          "person": { "$ref": "#/components/schemas/PersonCreate" }
+        },
+        "required": ["username", "password"]
+      },
+      "MinistryCreate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "leaders": { "type": "array", "items": { "type": "string" }, "description": "array of personIds" },
+          "members": { "type": "array", "items": { "type": "string" }, "description": "array of personIds" }
+        },
+        "required": ["name"]
+      },
+      "PersonCreate": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "phone": { "type": "string" },
+          "ministries": { "type": "array", "items": { "type": "string" }, "description": "array of ministryIds" },
+          "role": { "type": "string", "enum": ["leader","member"] }
+        },
+        "required": ["name"]
+      },
+      "Assignment": {
+        "type": "object",
+        "properties": {
+          "personId": { "type": "string" }
+        },
+        "required": ["personId"]
+      },
+      "EventCreate": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "date": { "type": "string", "format": "date-time" },
+          "ministryId": { "type": "string" },
+          "assignments": { "type": "array", "items": { "$ref": "#/components/schemas/Assignment" } }
+        },
+        "required": ["title","date","ministryId"]
+      }
+    }
+  }
+}
