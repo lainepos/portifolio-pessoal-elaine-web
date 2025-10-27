@@ -1,0 +1,38 @@
+/* Minimal styles for the app (created to fix missing file / MIME errors) */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.ministries-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.ministries-list .ministry {
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid #e6e6e6;
+}
+
+/* small responsive tweaks */
+@media (max-width: 600px) {
+  .ministries-list { gap: 0.25rem }
+}
+
+/* calendar tweaks used elsewhere */
+.calendar-day { min-height: 80px; padding: 0.25rem; }
+.event-item { background: #00d1b2; color: white; padding: 0.25rem; border-radius: 3px; margin-bottom: 0.25rem; }
+
+/* Simple calendar styles */
+#calendar-container { display: block; }
+.calendar { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.calendar .day { border: 1px solid #eee; padding: 8px; min-height: 60px; background: #fff; }
+.calendar .day.other-month { background: #f9f9f9; color: #aaa; }
+.calendar .day.has-event { background: #00d1b2; color: white; }
+.calendar .day .date { font-weight: bold; margin-bottom: 6px; }
+.calendar .day .event-item { display: none; }
+
+.calendar .day.has-event { cursor: pointer; }
+
+.card-header-icon .button { height: 28px; padding: 0 8px; }
+.card-header-icon #calendar-month-label { min-width: 140px; text-align: center; }

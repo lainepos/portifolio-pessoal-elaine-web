@@ -1,0 +1,83 @@
+<%- include('partials/header') %>
+
+<div class="level">
+    <div class="level-left">
+        <div class="level-item">
+            <h1 class="title">Pessoas</h1>
+        </div>
+    </div>
+    <div class="level-right">
+        <div class="level-item">
+            <button class="button is-primary" onclick="openNewPersonModal()">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>Novo Pessoa</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <div class="field">
+        <label class="label">Filtrar</label>
+        <div class="control">
+            <input class="input" id="people-filter" placeholder="Nome, telefone ou ministério">
+        </div>
+    </div>
+
+    <div id="people-list" class="columns is-multiline">
+        <!-- populated by client JS -->
+    </div>
+</div>
+
+<!-- Modal for new person -->
+<div class="modal" id="newPersonModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head">
+            <p class="modal-card-title">Nova Pessoa</p>
+            <button class="delete" aria-label="close" onclick="closeNewPersonModal()"></button>
+        </header>
+        <form id="newPersonForm" onsubmit="createPerson(event)">
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">Nome</label>
+                    <div class="control">
+                        <input class="input" type="text" name="name" required>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Telefone</label>
+                    <div class="control">
+                        <input class="input" type="text" name="phone">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Ministérios</label>
+                    <div class="control">
+                        <input class="input" type="text" name="ministries" placeholder="Separar por vírgula">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Papel</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="role">
+                                <option value="member">Membro</option>
+                                <option value="leader">Líder</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button type="submit" class="button is-primary">Salvar</button>
+                <button type="button" class="button" onclick="closeNewPersonModal()">Cancelar</button>
+            </footer>
+        </form>
+    </div>
+</div>
+
+<script src="/js/app.js"></script>
+<%- include('partials/footer') %>

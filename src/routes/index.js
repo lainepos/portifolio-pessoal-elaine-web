@@ -65,6 +65,12 @@ router.get('/logout', (req, res) => {
     res.redirect('/login');
 });
 
+// People page (protected)
+router.get('/pessoas', async (req, res) => {
+    // render view; client JS will populate list and handle creation
+    res.render('people');
+});
+
 // Protected routes
 router.use(requireAuth);
 

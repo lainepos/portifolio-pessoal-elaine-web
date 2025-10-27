@@ -52,5 +52,58 @@
     </div>
 </div>
 
+<div class="columns">
+    <div class="column is-one-third">
+        <div class="card">
+            <header class="card-header">
+                <p class="card-header-title">Calendário</p>
+                <div class="card-header-icon" style="align-items:center;">
+                    <button id="cal-prev" class="button" style="margin-right:6px;">◀</button>
+                    <span id="calendar-month-label" style="font-weight:600;margin-right:6px;">&nbsp;</span>
+                    <button id="cal-next" class="button">▶</button>
+                </div>
+            </header>
+            <div class="card-content">
+                <div id="calendar-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="column is-two-thirds">
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Pessoas - Membros</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div id="people-home-members"><!-- filled by client JS --></div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="/pessoas" class="card-footer-item">Ver todos</a>
+                    </footer>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Pessoas - Líderes</p>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            <div id="people-home-leaders"><!-- filled by client JS --></div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="/pessoas" class="card-footer-item">Ver todos</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
     <script src="/js/app.js"></script>
 <%- include('partials/footer') %>
