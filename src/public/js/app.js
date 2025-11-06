@@ -229,8 +229,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         const pid = a.personId || a.person || a.person_id || a.id;
                         return peopleMap[pid] || pid || '---';
                     }).join(', ');
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td>${new Date(ev.date).toLocaleDateString()}</td><td>${ev.title || ev.name || ''}</td><td>${ev.ministryId || ev.ministry || ''}</td><td>${assignedNames}</td>`;
+                        const tr = document.createElement('tr');
+                        const ministryDisplay = ev.ministryName || ev.ministry || ev.ministryId || '';
+                        tr.innerHTML = `<td>${new Date(ev.date).toLocaleDateString()}</td><td>${ev.title || ev.name || ''}</td><td>${ministryDisplay}</td><td>${assignedNames}</td>`;
                     eventsContainer.appendChild(tr);
                 });
             } else {
