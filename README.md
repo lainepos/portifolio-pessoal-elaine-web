@@ -8,7 +8,6 @@ A ferramenta ajuda a organizar escalas ministeriais da igreja, evitando que a me
 
 Principais funcionalidades
 - Página Home com calendário mensal, listagem de ministérios e pessoas (membros e líderes).
-- CRUD de Ministérios, Pessoas e Eventos (via chamadas à API).
 - Login de líderes (fluxo com token JWT e sincronização de sessão com o servidor front-end).
 - Calendário que destaca dias com eventos e permite navegação entre meses (limitado até Dez/2026 por padrão no front).
 
@@ -70,20 +69,3 @@ Testes e planos
 Bugs e Issues
 -------------
 - Use a aba Issues do GitHub para registrar bugs, melhorias e tarefas.
-
-Contribuição
-------------
-- Abra uma issue descrevendo a mudança proposta e, se for um PR, mantenha as alterações pequenas e documentadas.
-
-Contato
--------
-- Para dúvidas sobre o projeto, descreva o problema na issue do repositório ou deixe uma mensagem com o contexto e os passos para reproduzir.
-
----
-
-README adaptado para o contexto deste front-end web. Se quiser, eu também:
-- Adiciono instruções para executar em desenvolvimento com um backend mock local;
-- Gero um `docs/TestPlan.md` a partir do conteúdo do repositório anterior;
-- Incluo badges (build, license) no topo do README.
-
-Diga qual dessas opções você prefere que eu adicione.
